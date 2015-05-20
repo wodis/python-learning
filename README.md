@@ -66,3 +66,32 @@ if 语句的判断条件可以用>（大于）、<(小于)、==（等于）、>=
         
 由于 python 并不支持 switch 语句，所以多个条件判断，只能用 elif 来实现，如果判断需要多个条件需同时判断时，可以使用 or （或），表示两个条件有一个成立时判断条件成功；使用 and （与）时，表示只有两个条件同时成立的情况下，判断条件才成功。
 
+##4.循环语句 loop
+Python提供了for循环和while循环（在Python中没有do..while循环）:
+
+while:在给定的判断条件为 true 时执行循环体，否则退出循环体。
+
+    while 判断条件：
+        执行语句……
+
+for:重复执行语句
+
+    for iterating_var in sequence:
+       statements(s)
+
+break 语句:在语句块执行过程中终止循环，并且跳出整个循环
+
+continue 语句:在语句块执行过程中终止当前循环，跳出该次循环，执行下一次循环。
+
+pass 语句:pass是空语句，是为了保持程序结构的完整性。
+
+##5.日期和时间
+Python程序能用很多方式处理日期和时间。转换日期格式是一个常见的例行琐事。Python有一个time and calendar模组可以帮忙。
+
+    import time
+    import calendar
+    
+    time.time()
+    time.localtime(time.time())
+    time.asctime( time.localtime(time.time()) )
+    calendar.month(2008, 1)

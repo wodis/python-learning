@@ -3,7 +3,7 @@ __author__ = 'wudi'
 
 import thread
 import threading
-import time
+import time_test
 
 class Clock(threading.Thread):
     def __init__(self, id):
@@ -12,7 +12,7 @@ class Clock(threading.Thread):
 
     def run(self):
         while 1:
-            print "%d Id : %d" % (time.time(), self.id)
+            print "%d Id : %d" % (time_test.time_test(), self.id)
             pass
 
 
