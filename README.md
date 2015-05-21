@@ -94,4 +94,59 @@ Python程序能用很多方式处理日期和时间。转换日期格式是一�
     time.time()
     time.localtime(time.time())
     time.asctime( time.localtime(time.time()) )
-    calendar.month(2008, 1)
+    calendar.month(2008, 1)\
+    
+##6.函数 function
+* 函数代码块以def关键词开头，后接函数标识符名称和圆括号()。
+* 任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参数。
+* 函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。
+* 函数内容以冒号起始，并且缩进。
+* Return[expression]结束函数，选择性地返回一个值给调用方。不带表达式的return相当于返回 None。
+
+
+    def functionname( parameters ):
+       "函数_文档字符串"
+       function_suite
+       return [expression]
+       
+###值传递参数和引用传递参数
+所有参数（自变量）在Python里都是按引用传递。如果你在函数里修改了参数，那么在调用这个函数的函数里，原始的参数也被改变了。例如：
+
+    # 可写函数说明
+    def changeme( mylist ):
+       "修改传入的列表"
+       mylist.append([1,2,3,4]);
+       print "函数内取值: ", mylist
+       return
+     
+    # 调用changeme函数
+    mylist = [10,20,30];
+    changeme( mylist );
+    print "函数外取值: ", mylist
+    
+###缺省参数
+调用函数时，缺省参数的值如果没有传入，则被认为是默认值。下例会打印默认的age，如果age没有被传入：
+
+    def printinfo( name, age = 35 ):
+       "打印任何传入的字符串"
+       print "Name: ", name;
+       print "Age ", age;
+       return;
+       
+###不定长参数
+你可能需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数，和上述2种参数不同，声明时不会命名。基本语法如下：
+
+    def functionname([formal_args,] *var_args_tuple ):
+       "函数_文档字符串"
+       function_suite
+       return [expression]
+       
+###匿名函数
+* 用lambda关键词能创建小型匿名函数。这种函数得名于省略了用def声明函数的标准步骤。
+* Lambda函数能接收任何数量的参数但只能返回一个表达式的值，同时只能不能包含命令或多个表达式。
+* 匿名函数不能直接调用print，因为lambda需要一个表达式。
+* lambda函数拥有自己的名字空间，且不能访问自有参数列表之外或全局名字空间里的参数。
+* 虽然lambda函数看起来只能写一行，却不等同于C或C++的内联函数，后者的目的是调用小函数时不占用栈内存从而增加运行效率。
+
+
+    lambda [arg1 [,arg2,.....argn]]:expression
