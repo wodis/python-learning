@@ -150,3 +150,39 @@ Python程序能用很多方式处理日期和时间。转换日期格式是一�
 
 
     lambda [arg1 [,arg2,.....argn]]:expression
+
+##7.文件I/O
+###读取键盘输入
+Python提供了两个内置函数从标准输入读入一行文本，默认的标准输入是键盘。如下：
+
+* raw_input:函数从标准输入读取一个行，并返回一个字符串
+* input:函数基本可以互换，但是input会假设你的输入是一个有效的Python表达式，并返回运算结果。
+
+
+    str = raw_input("Enter your input: ");
+    str = input("Enter your input: ");
+    
+###open()方法
+* file_name：file_name变量是一个包含了你要访问的文件名称的字符串值。
+* access_mode：access_mode决定了打开文件的模式：只读，写入，追加等。所有可取值见如下的完全列表。这个参数是非强制的，默认文件访问模式为只读(r)。
+* buffering:如果buffering的值被设为0，就不会有寄存。如果buffering的值取1，访问文件时会寄存行。如果将buffering的值设为大于1的整数，表明了这就是的寄存区的缓冲大小。如果取负值，寄存区的缓冲大小则为系统默认。
+
+
+    file object = open(file_name [, access_mode][, buffering])
+
+###close()方法
+File对象的close（）方法刷新缓冲区里任何还没写入的信息，并关闭该文件，这之后便不能再进行写入。
+    
+    fileObject.close();
+    
+###write()方法
+write()方法可将任何字符串写入一个打开的文件。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。
+
+    fileObject.write(string);
+   
+###read()方法
+read（）方法从一个打开的文件中读取一个字符串。需要重点注意的是，Python字符串可以是二进制数据，而不是仅仅是文字。
+
+    fileObject.read([count]);
+    
+
