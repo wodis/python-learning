@@ -186,3 +186,18 @@ read（）方法从一个打开的文件中读取一个字符串。需要重点�
     fileObject.read([count]);
     
 
+##8.HTTP
+使用requests进行http请求处理
+
+requests.get(url, params=payload)
+
+requests.post(url, data=json.dumps(payload), headers=headers)
+
+r.text
+
+##9.JSON
+使用demjson进行转换
+
+demjson.encode(data)
+
+demjson.decode(json)
