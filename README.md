@@ -201,3 +201,29 @@ r.text
 demjson.encode(data)
 
 demjson.decode(json)
+
+##10.Log
+使用logging开发一个日志系统， 既要把日志输出到控制台， 还要写入日志文件。
+
+    logging.getLogger([name])
+    
+返回一个logger实例，如果没有指定name，返回root logger。只要name相同，返回的logger实例都是同一个而且只有一个，即name和logger实例是一一对应的。
+
+    Logger.setLevel(lvl)
+    
+设置logger的level， level有以下几个级别：
+NOTSET < DEBUG < INFO < WARNING < ERROR < CRITICAL
+
+    Logger.addHandler(hdlr)
+
+logger可以雇佣handler来帮它处理日志， handler主要有以下几种：
+StreamHandler: 输出到控制台
+FileHandler:   输出到文件
+handler还可以设置自己的level以及输出格式。
+
+    logging.basicConfig([**kwargs])
+
+* 这个函数用来配置root logger， 为root logger创建一个StreamHandler，设置默认的格式。
+* 这些函数： logging.debug()、logging.info()、logging.warning()、logging.error()、logging.critical() 如果调用的时候发现root logger没有任何handler， 会自动调用basicConfig添加一个handler
+* 如果root logger已有handler， 这个函数不做任何事情
+
