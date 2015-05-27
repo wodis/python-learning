@@ -227,3 +227,76 @@ handler还可以设置自己的level以及输出格式。
 * 这些函数： logging.debug()、logging.info()、logging.warning()、logging.error()、logging.critical() 如果调用的时候发现root logger没有任何handler， 会自动调用basicConfig添加一个handler
 * 如果root logger已有handler， 这个函数不做任何事情
 
+##11.面向对象 OOP
+Python从设计之初就已经是一门面向对象的语言，正因为如此，在Python中创建一个类和对象是很容易的。语法和Java相似，但是Python支持多继承。
+###创建类
+使用class语句来创建一个新类，class之后为类的名称并以冒号结尾，类的帮助信息可以通过ClassName.__doc__查看。class_suite 由类成员，方法，数据属性组成。
+如下实例:
+
+    class ClassName:
+        '类的帮助信息'   #类文档字符串
+        class_suite  #类体
+
+###创建实例对象
+要创建一个类的实例，你可以使用类的名称，并通过__init__方法接受参数。
+
+###Python内置类属性
+* .__dict__ : 类的属性（包含一个字典，由类的数据属性组成）
+* .__doc__ :类的文档字符串
+* .__name__: 类名
+* .__module__: 类定义所在的模块（类的全名是'__main__.className'，如果类位于一个导入模块mymod中，那么className.__module__ 等于 mymod）
+* .__bases__ : 类的所有父类构成元素（包含了以个由所有父类组成的元组）
+
+###python对象销毁(垃圾回收)
+同Java语言一样，Python使用了引用计数这一简单技术来追踪内存中的对象。
+
+在Python内部记录着所有使用中的对象各有多少引用。
+一个内部跟踪变量，称为一个引用计数器。
+
+当对象被创建时， 就创建了一个引用计数， 当这个对象不再需要时， 也就是说， 这个对象的引用计数变为0 时， 它被垃圾回收。但是回收不是"立即"的， 由解释器在适当的时机，将垃圾对象占用的内存空间回收。
+
+    a = 40
+    del a
+    
+###类的继承
+在python中继承中的一些特点：
+
+1. 在继承中基类的构造（__init__()方法）不会被自动调用，它需要在其派生类的构造中亲自专门调用。
+2. 在调用基类的方法时，需要加上基类的类名前缀，且需要带上self参数变量。区别于在类中调用普通函数时并不需要带上self参数
+3. Python总是首先查找对应类型的方法，如果它不能在派生类中找到对应的方法，它才开始到基类中逐个查找。（先在本类中查找调用的方法，找不到才去基类中找）。
+
+如果在继承元组中列了一个以上的类，那么它就被称作"多重继承" 。
+
+
+    class SubClassName (ParentClass1[, ParentClass2, ...]):
+        'Optional class documentation string'
+        class_suite
+        
+你可以使用issubclass()或者isinstance()方法来检测。
+
+* issubclass() - 布尔函数判断一个类是另一个类的子类或者子孙类，语法：issubclass(sub,sup)
+* isinstance(obj, Class) 布尔函数如果obj是Class类的实例对象或者是一个Class子类的实例对象则返回true。
+
+###方法重写
+如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法：
+
+    #coding=utf-8
+    #!/usr/bin/python
+    
+    class Parent:        # 定义父类
+       def myMethod(self):
+          print '调用父类方法'
+    
+    class Child(Parent): # 定义子类
+       def myMethod(self):
+          print '调用子类方法'
+    
+    c = Child()          # 子类实例
+    c.myMethod()         # 子类调用重写方法
+    
+###类属性与方法
+类的私有属性：__private_attrs：两个下划线开头，声明该属性为私有，不能在类地外部被使用或直接访问。在类内部的方法中使用时 self.__private_attrs。
+
+类的方法：在类地内部，使用def关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数self,且为第一个参数
+
+类的私有方法：__private_method：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 slef.__private_methods
