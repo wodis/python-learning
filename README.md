@@ -300,3 +300,32 @@ Python从设计之初就已经是一门面向对象的语言，正因为如此�
 类的方法：在类地内部，使用def关键字可以为类定义一个方法，与一般函数定义不同，类方法必须包含参数self,且为第一个参数
 
 类的私有方法：__private_method：两个下划线开头，声明该方法为私有方法，不能在类地外部调用。在类的内部调用 slef.__private_methods
+
+##12.多线程 Thread
+Python中使用线程有两种方式：函数或者用类来包装线程对象。
+
+####函数式：调用thread模块中的start_new_thread()函数来产生新线程。
+语法如下:
+
+    thread.start_new_thread ( function, args[, kwargs] )
+
+参数说明:
+
+* function - 线程函数。
+* args - 传递给线程函数的参数,他必须是个tuple类型。
+* kwargs - 可选参数。
+
+####thread 模块提供的其他方法：
+
+* threading.currentThread(): 返回当前的线程变量。
+* threading.enumerate(): 返回一个包含正在运行的线程的list。正在运行指线程启动后、结束前，不包括启动前和终止后的线程。
+* threading.activeCount(): 返回正在运行的线程数量，与len(threading.enumerate())有相同的结果。
+
+除了使用方法外，线程模块同样提供了Thread类来处理线程，Thread类提供了以下方法:
+
+* run(): 用以表示线程活动的方法。
+* start():启动线程活动。
+* join([time]): 等待至线程中止。这阻塞调用线程直至线程的join() 方法被调用中止-正常退出或者抛出未处理的异常-或者是可选的超时发生。
+* isAlive(): 返回线程是否活动的。
+* getName(): 返回线程名。
+* setName(): 设置线程名。
