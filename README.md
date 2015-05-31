@@ -329,3 +329,16 @@ Python中使用线程有两种方式：函数或者用类来包装线程对象�
 * isAlive(): 返回线程是否活动的。
 * getName(): 返回线程名。
 * setName(): 设置线程名。
+
+##13.Redis
+Redis客户端需要导入redis package
+
+通常我们需要创建一个连接池
+
+    pool = redis.ConnectionPool(host='localhost', port=6379, db=0)
+    
+然后从连接池中得到redis实例进行相应的操作
+
+    r = redis.Redis(connection_pool=pool)
+
+相应的redis方法请参考文档[http://redisdoc.com/](http://redisdoc.com/)
