@@ -342,3 +342,52 @@ Redis客户端需要导入redis package
     r = redis.Redis(connection_pool=pool)
 
 相应的redis方法请参考文档[http://redisdoc.com/](http://redisdoc.com/)
+
+##14.MySQLdb
+MySQLdb 是用于Python链接Mysql数据库的接口，它实现了 Python 数据库 API 规范 V2.0，基于 MySQL C API 上建立的。
+
+####引用MySQLdb
+为了用DB-API编写MySQL脚本，必须确保已经安装了MySQL
+
+    # encoding: utf-8
+    #!/usr/bin/python
+    import MySQLdb
+    
+####数据库连接
+
+    # 打开数据库连接
+    db = MySQLdb.connect("localhost","testuser","test123","TESTDB" )
+
+    # 使用cursor()方法获取操作游标 
+    cursor = db.cursor()
+    
+    # 使用execute方法执行SQL语句
+    cursor.execute("SELECT VERSION()")
+    
+    # 关闭数据库连接
+    db.close()
+
+####数据库插入更新操作
+
+    try:
+        # 执行sql语句
+        cursor.execute(sql)
+        # 提交到数据库执行
+        db.commit()
+    except:
+        # Rollback in case there is any error
+        db.rollback()
+
+####数据库查询操作
+Python查询Mysql使用 fetchone() 方法获取单条数据, 使用fetchall() 方法获取多条数据。
+
+* fetchone(): 该方法获取下一个查询结果集。结果集是一个对象
+* fetchall():接收全部的返回结果行.
+* rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。
+
+
+    # 执行SQL语句
+    cursor.execute(sql)
+    # 获取所有记录列表
+    results = cursor.fetchall()
+
